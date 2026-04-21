@@ -21,8 +21,30 @@ const cors = require("cors")
 const protect = require("./middlewares/protect.js")
 // 👆 Importing cors package and storing it in variable cors. cors allows your frontend and backend to talk to each other.
 
+const rateLimit = require("express-rate-limit")
+// 👆 Importing express-rate-limit
+
 const app = express()
 // 👆 Creating server
+
+// const limiter = rateLimit({
+//     // 👆 Creates a rate limiting rule
+//     window: 1000 * 60,
+//     /*
+//     👆
+//     Time window = 1 minute
+//     (1000 ms × 60 = 60,000 ms = 1 min)
+//     */
+//     max: 5
+//     // 👆 User can make only 5 requests in 1 minute
+// })
+// app.use(limiter)
+/*
+👆
+- Apply this limiter to your app
+- Now all requests will follow this rule
+*/
+// 👆 This code must be after creating server and before writing other code
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }))
 /*

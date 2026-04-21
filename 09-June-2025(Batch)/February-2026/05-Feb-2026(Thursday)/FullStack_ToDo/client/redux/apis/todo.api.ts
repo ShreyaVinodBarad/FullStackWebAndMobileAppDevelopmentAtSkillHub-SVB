@@ -6,11 +6,17 @@ export const toDoApi = createApi({
     // 👆 Creating API slice named toDoApi.
     reducerPath: "toDoApi",
     // 👆 Name used inside Redux store.
-    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/todo" }),
-    /*
-    👆 Base URL for all API requests.
-    Base URL is the common root path of API, and each endpoint adds its specific route to form the final request URL.
-    */
+    baseQuery: fetchBaseQuery(
+        {
+            baseUrl: "http://localhost:5000/api/todo",
+            /*
+            👆 Base URL for all API requests.
+            Base URL is the common root path of API, and each endpoint adds its specific route to form the final request URL.
+            */
+            credentials: "include"
+            // 👆 send cookies with request for authentication
+        }
+    ),
     tagTypes: ["todo"],
     // 👆 Used for cache control. "todo" tag helps refresh data automatically.
     endpoints: (builder) => {

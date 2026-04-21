@@ -69,6 +69,8 @@ app
     (public)
         register
             page.tsx
+middleware.ts
+
 c) Write the code of ToDo.ts => types folder
 
 d) Write code for files in redux Folder:
@@ -220,7 +222,40 @@ j) Notes:
 Cookie expire period is 1 min after 1 min you will not get ToDo data if you try to get it will show No Cookie Found!
 k) Passing protect as middleware to todo route in index.js file so before user login it can't create, read, update or delete todo.  
 ------------------------------------------------------------------
-10) Libraries to Intall:
+9) client Folder:
+a) Create a file - middleware.ts in the client folder itself.
+b) middleware.ts
+- I have written code in middleware.ts file, with required code explanation.
+c) todo.api.ts
+- Added this line: credentials: "include"
+baseQuery: fetchBaseQuery(
+    {
+        baseUrl: "http://localhost:5000/api/todo",
+        credentials: "include"
+    }
+)
+------------------------------------------------------------------
+10) Rate Limiting:
+a) Explanation:
+- Limit how many times a user can make a request in a short time.
+=> Example (Get Todo):
+- If you click “Get Todo” many times very fast:
+1) Without rate limiting 
+- Server gets too many requests
+- Can crash or slow down
+2) With rate limiting 
+- Server says: “You clicked too many times, wait a bit.”
+
+b) server Folder:
+1) Install:
+cd server
+npm i express-rate-limit 
+2) index.js 
+- I have written code in index.js file, with required code explanation. Later the code is commented.
+3) auth.routes.js
+- I have written code in auth.routes.js file, with required code explanation.
+------------------------------------------------------------------
+11) Libraries to Intall:
 a) client
 - npm install @reduxjs/toolkit react-redux
 - npm install zod
