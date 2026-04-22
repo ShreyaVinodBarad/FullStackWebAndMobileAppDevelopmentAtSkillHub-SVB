@@ -46,7 +46,15 @@ const app = express()
 */
 // 👆 This code must be after creating server and before writing other code
 
-app.use(cors({ origin: "http://localhost:3000", credentials: true }))
+app.use(cors(
+    {
+        origin:
+            process.env.NODE_ENV === "production"
+                ? "https://fullstack-client-taupe.vercel.app"
+                : "http://localhost:3000",
+        credentials: true
+    }
+))
 /*
 👆
 app → Your Express server

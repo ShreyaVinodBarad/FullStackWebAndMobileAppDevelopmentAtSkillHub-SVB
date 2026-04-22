@@ -82,4 +82,30 @@ https://fullstack-server-iota.vercel.app/
 j) Go to client folder and in .env file update the variable named NEXT_PUBLIC_BACKEND_URL value with your live backend URL i.e.; https://fullstack-server-iota.vercel.app ie.:
 NEXT_PUBLIC_BACKEND_URL=https://fullstack-server-iota.vercel.app
 k) Click on your name to get to general dashboard.
-l) Click on Add New -> Project -> 
+l) Click on Add New button and click on Project option from the dropdown.
+m) Click on Import after selecting your Project Repo.
+n) In Project Name name the project as fullstack-client.
+o) Then click on Edit button in Root Directory.
+- Then select: PracticeHostingOnVercel -> FullStack_ToDo -> client
+- Then click on Continue button.
+p) Click on Environment Variables
+- Click on Import .env button.
+- In your Project go to client folder -> select .env file -> click on Open button
+q) Click on Deploy button.
+r) Then click on Continue to Dashboard button.
+s) In Domains you will get URL where is your Frontend of the application will run.
+t) Go to the register endpoint in the URL and try to register if you get the error as - Unable to Register that means your Frontend is not connected to your Backend which shows CORS Error.
+u) Go to server folder and in index.js file update this line: 
+app.use(cors({ origin: "http://localhost:3000", credentials: true })) 
+with the Frontend URL as:
+app.use(cors(
+    {
+        origin:
+            process.env.NODE_ENV === "production"
+                ? "https://fullstack-client-taupe.vercel.app"
+                : "http://localhost:3000",
+        credentials: true
+    }
+))
+v) Push the code on GitHub.
+w) 
