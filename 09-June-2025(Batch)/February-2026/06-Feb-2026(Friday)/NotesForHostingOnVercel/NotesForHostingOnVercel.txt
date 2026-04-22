@@ -57,3 +57,29 @@ npm i
 nodemon index.js
 15) Check if the project is working fine locally.
 16) Push the project code in GitHub.
+17) Go to Vercel. Steps to follow:
+a) Click on Add New button and click on Project option from the dropdown.
+b) Then click on - Continue with GitHub button.
+c) Click on Import after selecting your Project Repo.
+d) We will be hosting Frontend and Backend separately so, in Project Name name the project as fullstack-server.
+e) Then click on Edit button in Root Directory.
+- Then select: PracticeHostingOnVercel -> FullStack_ToDo -> server 
+- Then click on Continue button.
+f) Click on Environment Variables
+- Click on Import .env button.
+- In your Project go to server folder -> select .env file -> click on Open button
+- You will find a key NODE_ENV whose value will be developemnt. Change the value to production.
+NODE_ENV -> developemnt TO NODE_ENV -> production
+g) Click on Deploy button.
+h) Then click on Continue to Dashboard button.
+i) In Domains you will get URL where is your real application running.
+- In that URL add your endpoints as /api/todo: 
+https://fullstack-server-iota.vercel.app/api/todo
+- If you get the below given error it means your NodeJS code is running prefectly.
+{"message":"No Cookie Found!","success":false}
+- Your backend is working on this URL:
+https://fullstack-server-iota.vercel.app/
+j) Go to client folder and in .env file update the variable named NEXT_PUBLIC_BACKEND_URL value with your live backend URL i.e.; https://fullstack-server-iota.vercel.app ie.:
+NEXT_PUBLIC_BACKEND_URL=https://fullstack-server-iota.vercel.app
+k) Click on your name to get to general dashboard.
+l) Click on Add New -> Project -> 
