@@ -108,4 +108,5 @@ app.use(cors(
     }
 ))
 v) Push the code on GitHub.
-w) 
+w) Click on your name to get to general dashboard.
+x) Run your Frontend application and go to register endpoint and check wether you are getting registered.
