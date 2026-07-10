@@ -1,0 +1,130 @@
+1) Native & Hybrid App Development:
+1) Native App Development
+- Apps are built using specific language for each platform
+Android → Java / Kotlin
+iOS → Swift
+- Works only on one platform
+- Example: If you build for Android, it won’t work on iPhone.
+a) Pros:
+- Very fast 
+- Best performance
+- Smooth UI
+b) Cons:
+- Need to write separate code for Android & iOS
+- Takes more time and effort
+2) Hybrid App Development
+- Apps are built using one codebase (HTML, CSS, JavaScript)
+- Works on both Android & iOS
+- Example: One app works everywhere.
+a) Pros:
+- Write once, use everywhere
+- Faster development
+- Cost-effective 
+b) Cons:
+- Slightly slower than native
+- UI may not feel 100% like real native apps
+--------------------------------------------------------
+2) Managed and Manual Way:
+- In React Native, you can build apps in two ways:
+1) React Native (Managed / Expo)
+- You use Expo
+- No need to handle Android/iOS setup
+- Simple meaning:
+“Just write code and run the app”
+a) Pros:
+- Easy to start 
+- No heavy setup
+- Fast development
+b) Cons:
+- Limited control over native features
+- Not good for very complex apps
+2) React Native (Manual / CLI)
+- You use React Native CLI
+- You manage Android & iOS setup yourself
+- Simple meaning:
+“More control, but more work”
+a) Pros:
+- Full control over native code 
+- Can build complex apps
+b) Cons:
+- Setup is difficult
+- Takes more time
+--------------------------------------------------------
+3) Website to refer:
+https://docs.expo.dev/
+👆 This website has documentation
+--------------------------------------------------------
+4) How to set up the project?
+a) Command to set up the project:
+npx create-expo-app@latest --template blank
+b) Run your project:
+cd mobile-app-development-basics
+npm start
+--------------------------------------------------------
+5) Install an app in your mobile:
+Expo Go
+a) Internet must be same on your Mobile and Laptop. If using Wi-Fi use same for both Mobile and Laptop
+--------------------------------------------------------
+6) Notes:
+1) In Expo Go:
+- Expo Go is already a mobile app (native app) installed on your phone
+- Inside it, native code is already written using:
+Android → Java / Kotlin
+iOS → Swift
+2) What happens step-by-step:
+- You write code in JavaScript
+- Expo Go loads your code
+- Your JS code talks to the native code inside Expo Go
+- Native code shows UI / uses phone features
+--------------------------------------------------------
+7) Mobile App Development Project in TypeScript:
+=> How to set up the project?
+a) Command to set up the project:
+npx create-expo-app@latest --template blank-typescript
+b) Run your project:
+cd mobile-app-development-typescript-basics
+npm start
+
+=> Installing Navigation
+cd mobile-app-development-typescript-basics
+a) npm install @react-navigation/native
+=> Meaning:
+- Installs React Navigation core package
+- Used to move between screens (pages) in your app
+b) npx expo install react-native-screens react-native-safe-area-context
+=> Supporting libraries (helpers)
+react-native-screens → improves screen performance
+react-native-safe-area-context → handles safe area (notch, status bar)
+c) npm install @react-navigation/native-stack
+=> Adds stack navigation
+- Screens open like:
+Page1 → Page2 → Page3 (like a stack)
+d) Simple Flow
+- @react-navigation/native → base
+- dependencies → support
+- native-stack → actual screen navigation
+--------------------------------------------------------
+8) If project is not running what to do?
+- Go to package.json file
+- Go to this below given code:
+"scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+}
+- Make some changes in the file, like this:
+"scripts": {
+    "start": "expo start --tunnel",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+}
+- And save package.json file
+=> Why this works?
+--tunnel uses internet instead of local network
+a) Helps when:
+- Mobile is not connected to same WiFi
+- Network issue / firewall problem
+- Expo not connecting properly
+--------------------------------------------------------

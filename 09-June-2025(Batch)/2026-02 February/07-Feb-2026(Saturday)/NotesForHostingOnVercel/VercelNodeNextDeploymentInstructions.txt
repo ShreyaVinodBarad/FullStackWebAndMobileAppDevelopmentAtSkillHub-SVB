@@ -1,0 +1,29 @@
+1) NodeJS Express JavaScript Server Setup
+a) Update .env file
+- Use live MongoDB URL
+MONGO_URL=mongodb+srv://ShreyaVinodBarad:YGnHd6PtXGOD4jZ9@cluster0.zayylg6.mongodb.net/fullstack-todo 
+- Set up NODE_ENV
+NODE_ENV=development 
+
+b) Cookie Security Configuration
+- Configure secure cookie based on environment.
+// In your server configuration
+res.cookie('token', token, {
+    secure: process.env.NODE_ENV === 'production', // false in development, true in production
+    httpOnly: true,
+});
+- Go to server -> controller -> auth.controller.js
+=> In login function in cookie part add this lines so code will be:
+res.cookie("ADMIN", token, 
+{
+    maxAge: 1000 * 60,
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production"
+}
+)
+
+c) Export App Variable
+- In your server -> index.js file add this line:
+module.exports = app
+---------------------------------------------------------------------------------
+2) 

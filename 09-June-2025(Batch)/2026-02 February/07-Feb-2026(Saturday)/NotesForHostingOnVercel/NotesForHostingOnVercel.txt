@@ -1,0 +1,112 @@
+# Steps to Host both Frontend and Backend: 
+1) Make a copy of your project.
+2) Go to server folder and delete node_modules folder.
+3) Go to client folder and delete node_modules & .next folders.
+4) Create your Account and Login to GitHub and Vercel Websites.
+5) Open your project in VS Code.
+6) Go to server folder and in .env file in MONGO_URL we need live URL of MongoDB database.
+I.e; 
+MONGO_URL=mongodb+srv://ShreyaVinodBarad:YGnHd6PtXGOD4jZ9@cluster0.zayylg6.mongodb.net/fullstack-todo
+7) And in .env file we need to create a new variable:
+NODE_ENV=development 
+8) Go to server folder and in controllers folder go to auth.controller.js file.
+- When making the project live we need update the below line of code in auth.controller.js file:
+res.cookie("ADMIN", token, {
+            maxAge: 1000 * 60,
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production"
+}
+)
+- This line process.env.NODE_ENV === "production" returns boolean value and currently in this process.env.NODE_ENV we have "developemnt" means this line process.env.NODE_ENV === "production" returns false so secure is false.
+- When we want the project to be live we will make this process.env.NODE_ENV as production so in live secure will be true ie.; secure:true and when in local we will keep secure:false. 
+Local => secure:false
+Live => secure:true
+9) In server folder go to index.js file and at the bottom of file add this line:
+module.exports = app
+10) Create a new file named vercel.json in server folder and add this lines in the vercel.json file:
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "index.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/index.js"
+        }
+    ]
+}
+11) In client folder create a new file .env and create a new variable:
+NEXT_PUBLIC_BACKEND_URL=http://localhost:5000
+👆 Here in the variable name NEXT_PUBLIC_ is fixed after that you can add any name according to your wish.
+12) In client folder go to redux folder -> apis folder -> auth.api.ts file copy this line: http://localhost:5000 from this line of code: baseUrl: "http://localhost:5000/api/auth" and paste in .env file as the value of the variable named NEXT_PUBLIC_BACKEND_URL.
+- Update this line: baseUrl: "http://localhost:5000/api/auth" in auth.api.ts file as:
+baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth`
+- Update this line: baseUrl: "http://localhost:5000/api/todo" in todo.api.ts file as:
+baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/todo`
+13) Go to terminal and fire these command for client folder:
+cd client
+npm i
+npm run dev
+14) Go to terminal and fire these command for server folder:
+cd server
+npm i
+nodemon index.js
+15) Check if the project is working fine locally.
+16) Push the project code in GitHub.
+17) Go to Vercel. Steps to follow:
+a) Click on Add New button and click on Project option from the dropdown.
+b) Then click on - Continue with GitHub button.
+c) Click on Import after selecting your Project Repo.
+d) We will be hosting Frontend and Backend separately so, in Project Name name the project as fullstack-server.
+e) Then click on Edit button in Root Directory.
+- Then select: PracticeHostingOnVercel -> FullStack_ToDo -> server 
+- Then click on Continue button.
+f) Click on Environment Variables
+- Click on Import .env button.
+- In your Project go to server folder -> select .env file -> click on Open button
+- You will find a key NODE_ENV whose value will be developemnt. Change the value to production.
+NODE_ENV -> developemnt TO NODE_ENV -> production
+g) Click on Deploy button.
+h) Then click on Continue to Dashboard button.
+i) In Domains you will get URL where is your real application running.
+- In that URL add your endpoints as /api/todo: 
+https://fullstack-server-iota.vercel.app/api/todo
+- If you get the below given error it means your NodeJS code is running prefectly.
+{"message":"No Cookie Found!","success":false}
+- Your backend is working on this URL:
+https://fullstack-server-iota.vercel.app/
+j) Go to client folder and in .env file update the variable named NEXT_PUBLIC_BACKEND_URL value with your live backend URL i.e.; https://fullstack-server-iota.vercel.app ie.:
+NEXT_PUBLIC_BACKEND_URL=https://fullstack-server-iota.vercel.app
+k) Click on your name to get to general dashboard.
+l) Click on Add New button and click on Project option from the dropdown.
+m) Click on Import after selecting your Project Repo.
+n) In Project Name name the project as fullstack-client.
+o) Then click on Edit button in Root Directory.
+- Then select: PracticeHostingOnVercel -> FullStack_ToDo -> client
+- Then click on Continue button.
+p) Click on Environment Variables
+- Click on Import .env button.
+- In your Project go to client folder -> select .env file -> click on Open button
+q) Click on Deploy button.
+r) Then click on Continue to Dashboard button.
+s) In Domains you will get URL where is your Frontend of the application will run.
+t) Go to the register endpoint in the URL and try to register if you get the error as - Unable to Register that means your Frontend is not connected to your Backend which shows CORS Error.
+u) Go to server folder and in index.js file update this line: 
+app.use(cors({ origin: "http://localhost:3000", credentials: true })) 
+with the Frontend URL as:
+app.use(cors(
+    {
+        origin:
+            process.env.NODE_ENV === "production"
+                ? "https://fullstack-client-taupe.vercel.app"
+                : "http://localhost:3000",
+        credentials: true
+    }
+))
+v) Push the code on GitHub.
+w) Click on your name to get to general dashboard.
+x) Run your Frontend application and go to register endpoint and check wether you are getting registered.

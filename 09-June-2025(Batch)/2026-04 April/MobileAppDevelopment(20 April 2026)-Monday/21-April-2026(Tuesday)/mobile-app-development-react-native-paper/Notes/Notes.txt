@@ -1,0 +1,52 @@
+1) Create Project
+npx create-expo-app@latest --template blank-typescript .
+- Start App
+npm start
+----------------------------------------------------------------
+2) What is React Native Paper?
+- It is a UI library that gives you ready-made beautiful components for React Native apps.
+----------------------------------------------------------------
+3) Website to refer:
+https://reactnativepaper.com
+----------------------------------------------------------------
+4) Installation:
+npm install react-native-paper
+👆 Installs React Native Paper (ready-made UI components)
+
+npm install react-native-safe-area-context
+👆 Helps your app fit properly on screen (avoids notch, safe area issues)
+
+npm install @react-native-vector-icons/material-design-icons
+👆 Adds icons (Material Design icons) to your app
+----------------------------------------------------------------
+5) Folder Structure:
+screens
+    Pbutton.tsx
+    Pcard.tsx
+    Pavatar.tsx
+    Pdrawer.tsx
+    Pfab.tsx
+    Pswitch.tsx
+    Psurface.tsx
+    Psnackbar.tsx
+----------------------------------------------------------------
+6) Coding:
+1) App.tsx
+- I have written the code in App.tsx file, with required code explanation.
+2) Pbutton.tsx
+- I have written the code in Pbutton.tsx file, with required code explanation.
+3) Pcard.tsx
+- I have written the code in Pcard.tsx file, with required code explanation.
+4) Pavatar.tsx
+- I have written the code in Pavatar.tsx file, with required code explanation.
+5) Pdrawer.tsx
+- I have written the code in Pdrawer.tsx file, with required code explanation.
+6) Pfab.tsx
+- I have written the code in Pfab.tsx file, with required code explanation.
+7) Pswitch.tsx
+- I have written the code in Pswitch.tsx file, with required code explanation.
+8) Psurface.tsx
+- I have written the code in Psurface.tsx file, with required code explanation.
+9) Psnackbar.tsx
+- I have written the code in Psnackbar.tsx file, with required code explanation.
+----------------------------------------------------------------
